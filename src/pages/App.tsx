@@ -1,6 +1,8 @@
 import { Routes , Route } from 'react-router-dom'
 import { QuizDetail } from './Quiz'
 import Home from './Home';
+import { Score } from './Score';
+import { Review } from './Review';
 
 function App() {
 
@@ -11,6 +13,8 @@ function App() {
         <Route path='/question'>
           <Route path=':number' element={<QuizDetail/>} />
         </Route>
+        <Route path='/score' element={<Score/>}/>
+        <Route path='/review' element={<Review/>}/>
       </Routes>
       
     </>

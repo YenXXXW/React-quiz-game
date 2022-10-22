@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <div className='bg-simpleBg '>
+  <div className='bg-simpleBg bg-cover bg-no-repeat '>
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>        

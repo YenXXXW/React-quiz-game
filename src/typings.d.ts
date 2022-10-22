@@ -9,3 +9,10 @@ export interface QuizObject {
     tags : string[]
     type : string
 }
+
+export interface userInfoQuiz {
+    question : string ,
+    userSelectedAnswer : string ,
+    correctAnswer : string ,
+    answers : string[]
+}

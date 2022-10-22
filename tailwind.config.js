@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'simpleBg': "url('https://www.wallpaperflare.com/static/585/258/417/simple-simple-background-minimalism-abstract-wallpaper.jpg')",
+        'simpleBg': "url('https://mymodernmet.com/wp/wp-content/uploads/2020/02/en-plein-air-beach-paintings-sally-west-thumbnail.jpg')",
       }
     },
   },
