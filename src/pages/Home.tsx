@@ -35,7 +35,7 @@ function Home() {
   
   return (
     <>
-      <div className="relative h-screen flex flex-col justify-center items-center">
+      <div className="relative h-screen flex flex-col justify-center items-center overflow-y-auto">
         <img src='trivia.png' width="400px" height='200px'/>
         <div className='backdrop-blur-md bg-white/20 px-9 py-5 text-center rounded-md space-y-5 w-[350px]'>
           <p className='text-[#e2a234] font-bold text-lg'>Welcome to the quiz</p>
