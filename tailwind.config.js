@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'simpleBg': "url('https://mymodernmet.com/wp/wp-content/uploads/2020/02/en-plein-air-beach-paintings-sally-west-thumbnail.jpg')",
+        'simpleBg': "url('https://www.pixelstalk.net/wp-content/uploads/2016/07/Relaxing-Background-HD.jpg')",
       }
     },
   },

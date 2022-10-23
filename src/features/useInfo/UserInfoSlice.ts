@@ -1,12 +1,12 @@
-import { createSlice  , PayloadAction } from '@reduxjs/toolkit'
+import { createSlice   } from '@reduxjs/toolkit'
 import { userInfoQuiz } from '../../typings'
 
-interface initialState {
+interface InitialState {
     score : number
     userInfoQuizArr : userInfoQuiz[]
 } 
 
-const initialState : initialState={
+const initialState : InitialState={
     score : 0 ,
     userInfoQuizArr : []
 }
@@ -15,17 +15,20 @@ const UserInfoSlice = createSlice({
     name : 'useInfo' ,
     initialState ,
     reducers : {
+        ResetScore : (state)=>{
+            state.score = 0
+        },
         AddScore : (state)=>{
-            console.log('added')
             state.score++
-            console.log(state.score)
+        },
+        ResetUserInfo : (state)=>{
+            state.userInfoQuizArr = []
         },
         AddUserInfoQuiz : (state , action)=>{
             state.userInfoQuizArr=state.userInfoQuizArr.concat(action.payload)
-            console.log(state.userInfoQuizArr)
         }
     }
 })
 
 export default UserInfoSlice.reducer
-export const { AddScore , AddUserInfoQuiz } = UserInfoSlice.actions
+export const { AddScore , AddUserInfoQuiz , ResetScore , ResetUserInfo } = UserInfoSlice.actions

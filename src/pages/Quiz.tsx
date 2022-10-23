@@ -1,5 +1,5 @@
-import React , { useEffect , useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect , useState} from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { completedQuiz } from '../features/game/gameSlice'
 import { AddScore, AddUserInfoQuiz } from '../features/useInfo/UserInfoSlice'
 import { useAppSelector , useAppDispatch } from '../reduxapp/hooks'
@@ -9,18 +9,18 @@ export const QuizDetail = () => {
 
     const [Index , setIndex ]  = useState(0)
     const [ selectedAnswer , setSelectedAnswer ] = useState('')
-    
+    const [ toNext , setToNext ] = useState(false)
     let Qnumber = 0 
 
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const Quiz = useAppSelector(state=>state.game.Quiz)   
-    
+    const location = useLocation()
     // insert the correct answer into incorrectAnswers array  
     useEffect(()=>{
         const index = Math.round(Math.random()*10)%4
         setIndex(index)
-    },[])
+    },[location])
  
     const handleNext=()=>{
         
@@ -51,54 +51,54 @@ export const QuizDetail = () => {
         let answers: string[] = [...Quiz[0].incorrectAnswers]
         answers.splice(Index , 0 ,Quiz[0].correctAnswer)
         Qnumber = (10-Quiz.length)
-        console.log(Quiz);
         return(
-            <div className='space-y-5 w-full bg-white/80'>
-                <div className='border-[3px] backdrop-blur-md border-emerald-100 px-3 py-2' >
+            <div className='space-y-5 w-full'>
+                <div className='backdrop-blur-md bg-black/5 rounded-md text-green-700 px-5 py-3' >
                     Q{Qnumber+1}. {Quiz[0].question}
                 </div>
                 <div className='space-y-3 flex flex-col items-center'>
                 
-                    <div className=' bg-white/90 rounded-md'>
+                    <div className='backdrop-blur-md bg-white rounded-md shadow-lg'>
                         <div
-                            onClick ={()=>{setSelectedAnswer(answers[0])}}
-                            className={`w-[300px] text-center py-1 text-purple-600 rounded-md cursor-pointer ${selectedAnswer === answers[0] ? 'bg-cyan-400' : ''}`}
+                            onClick ={()=>{setSelectedAnswer(answers[0]) ; setToNext(true)}}
+                            className={`w-[300px] px-2 text-center py-1 text-green-600 rounded-md cursor-pointer ${selectedAnswer === answers[0] ? 'bg-[#03fce3]' : ''}`}
                         
                         >
                             {answers[0]}
                         </div>  
                     </div>
-                    <div className=' bg-white/90 rounded-md'>
+                    <div className='backdrop-blur-md bg-white rounded-md shadow-lg'>
                         <div
-                        className={`w-[300px] text-center py-1 text-purple-600 rounded-md cursor-pointer ${selectedAnswer === answers[1] ? 'bg-cyan-400' : ''}`}
-                        onClick ={()=>{setSelectedAnswer(answers[1])}}
+                        className={`w-[300px] px-2 text-center py-1 text-green-600 rounded-md cursor-pointer ${selectedAnswer === answers[1] ? 'bg-[#03fce3]' : ''}`}
+                        onClick ={()=>{setSelectedAnswer(answers[1]) ; setToNext(true)}}
                         >
                             {answers[1]}
                         </div>
                     </div>                        
                 
-                    <div className=' bg-white/90 rounded-md'>
+                    <div className='backdrop-blur-md bg-white rounded-md'>
                         <div
-                        className={`w-[300px]  text-center py-1 text-purple-600 rounded-md cursor-pointer ${selectedAnswer === answers[2] ? 'bg-cyan-400' : ''}`}
-                        onClick ={()=>{setSelectedAnswer(answers[2])}}
+                        className={`w-[300px] px-2 text-center py-1 text-green-600 rounded-md cursor-pointer ${selectedAnswer === answers[2] ? 'bg-[#03fce3]' : ''}`}
+                        onClick ={()=>{setSelectedAnswer(answers[2]) ; setToNext(true)}}
                         >
                             {answers[2]}
                         </div>
                     </div>
-                    <div className=' bg-white/90 rounded-md'>
+                    <div className='backdrop-blur-md bg-white rounded-md'>
                         <div
-                        className={`w-[300px]  text-center py-1 text-purple-600 rounded-md cursor-pointer ${selectedAnswer === answers[3] ? 'bg-cyan-400' : ''}`}
-                        onClick ={()=>{setSelectedAnswer(answers[3])}}
+                        className={`w-[300px] px-2 text-center py-1 text-green-600 rounded-md cursor-pointer ${selectedAnswer === answers[3] ? 'bg-[#03fce3]' : ''}`}
+                        onClick ={()=>{setSelectedAnswer(answers[3]) ; setToNext(true)}}
                         >
                             {answers[3]}
                         </div>
                     </div>
                 
                 </div>
+                
                 {
-                    Qnumber < 9 && (                        
+                    Qnumber < 9 && toNext && (                        
                         <div
-                            className='mx-auto text-center bg-red-500 w-[80px] text-base mt-14 rounded-sm font-normal cursor-pointer'
+                            className='mx-auto text-green-700 bg-[#f7ef8a] text-center w-[80px] text-base rounded-sm font-normal shadow-lg cursor-pointer'
                             onClick={handleNext}
                         >
                             Next
@@ -106,15 +106,16 @@ export const QuizDetail = () => {
                     ) 
                 }
                 {
-                    Qnumber === 9 && (                        
+                    Qnumber === 9 && toNext && (                        
                         <div
-                         className='text-end text-base mt-10 font-normal cursor-pointer'
+                         className='mx-auto text-green-700 bg-[#f7ef8a] text-center w-[80px] text-base rounded-sm font-normal shadow-lg cursor-pointer'
                          onClick={handleNext} 
                         >
                             finish
                         </div>
                     ) 
                 }
+                              
             </div>
         )
     }

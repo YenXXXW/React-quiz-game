@@ -1,10 +1,8 @@
 import axios from 'axios'
 import { useEffect ,useState  } from 'react'
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch , useAppSelector} from '../reduxapp/hooks'
+import { useAppDispatch } from '../reduxapp/hooks'
 import { Quizfetched  } from '../features/game/gameSlice'
-import { Routes , Route } from 'react-router-dom'
-import { QuizDetail } from './Quiz'
 
 function Home() {
 
@@ -29,8 +27,8 @@ function Home() {
     }
     
   }
-  const Quiz= useAppSelector(state=>state.game.Quiz)
-  console.log(Quiz);
+
+  
   return (
     <>
       <div className="relative h-screen flex flex-col justify-center items-center">
