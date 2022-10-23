@@ -51,6 +51,7 @@ export const QuizDetail = () => {
         let answers: string[] = [...Quiz[0].incorrectAnswers]
         answers.splice(Index , 0 ,Quiz[0].correctAnswer)
         Qnumber = (10-Quiz.length)
+        
         return(
             <div className='space-y-5 w-full'>
                 <div className='backdrop-blur-md bg-black/5 rounded-md text-green-700 px-5 py-3' >

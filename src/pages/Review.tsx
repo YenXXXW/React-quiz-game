@@ -13,7 +13,7 @@ export const Review = () => {
       {
         userInfo.map((info : userInfoQuiz, i:number)=>{
           return(
-            <div className='mt-5 bg-white/70 px-5 flex w-[80vw] md:w-[60vw] pb-2'>
+            <div className='mt-5 bg-white/70 px-5 flex w-[80vw] md:w-[60vw] pb-2' key={i}>
               <p>Q{i+1}.</p>
               <div className='ml-2'>
                 <p> {info.question}</p>

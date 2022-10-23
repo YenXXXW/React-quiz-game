@@ -43,14 +43,14 @@ export const Score = () => {
         <div onClick={()=>{
           navigate('/review')
         }}>
-          <p className='py-1 px-1 shadow-lg bg-[#faf173] text-green-600 rounded-md'>Review</p>
+          <p className='py-1 px-1 shadow-lg bg-[#faf173] text-green-600 rounded-md cursor-pointer'>Review</p>
         </div>
         <div onClick={()=>{
           dispatch(ResetScore())
           dispatch(ResetUserInfo())
           navigate('/')
         }}>
-          <p className='py-1 px-1 shadow-lg bg-[#faf173] text-green-600 rounded-md'>New game</p>
+          <p className='py-1 px-1 shadow-lg bg-[#faf173] text-green-600 rounded-md cursor-pointer'>New game</p>
         </div>
       </div>
       
