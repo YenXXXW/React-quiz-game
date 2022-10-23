@@ -34,7 +34,12 @@ function Home() {
       <div className="relative h-screen flex flex-col justify-center items-center">
         <div className='backdrop-blur-md bg-white/20 px-9 py-5 text-center rounded-md space-y-5'>
           <p className='text-blue-700 font-bold text-lg'>Welcome to the quiz</p>
-          <button onClick={()=>setFetchQuiz(true)}>Start</button>
+          <button
+           onClick={()=>setFetchQuiz(true)}
+           className='bg-blue-700 text-white rounded-md py-1 px-2'
+          >
+            Start
+          </button>
         </div>
       </div>
     </>
